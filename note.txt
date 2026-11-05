@@ -1,0 +1,5 @@
+python -m uvicorn main:app --reload
+
+
+git commit --amend -m "Tulis Pesan Commit yang Baru di Sini"
+git push origin main --force
