@@ -52,7 +52,7 @@ export default function Login() {
       
       console.log("Data Profil dari Backend:", userProfile);
 
-      // 🔥 TRIK ANTI-GAGAL: Nangkep ID mau itu namanya 'id', '_id', atau 'user_id'
+      //Nangkep ID mau itu namanya 'id', '_id', atau 'user_id'
       const userId = userProfile.id || userProfile._id || userProfile.user_id;
 
       if (!userId) {
@@ -68,7 +68,9 @@ export default function Login() {
       window.dispatchEvent(new Event('auth-change'));
 
       // 3. REDIRECT BERDASARKAN ROLE
-      if (userProfile.role === 'ADMIN' || userProfile.role === 'AGENT') {
+      const userRole = (userProfile.role || 'CUSTOMER').toUpperCase();
+
+      if (userRole === 'ADMIN' || userRole === 'AGENT') {
         navigate('/admin'); 
       } else {
         navigate('/customer'); 
